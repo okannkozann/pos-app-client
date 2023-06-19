@@ -5,7 +5,7 @@ const Add = ({
   isAddModalOpen,
   setIsAddModalOpen,
   categories,
-  setCatregories,
+  setCategories,
 }) => {
   const [form] = Form.useForm();
 
@@ -18,13 +18,14 @@ const Add = ({
       });
       message.success("Kategori başarıyla eklendi");
       form.resetFields();
-      setCatregories([
+      setCategories([
         ...categories,
         {
           _id: Math.random(),
           title: values.title,
         },
       ]); //yeni eklenen kategori anında listeye eklensin diye
+      setIsAddModalOpen(false);
     } catch (error) {
       console.log(error);
     }

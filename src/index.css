@@ -13,6 +13,11 @@ body {
   background-color: #1677ff;
 }
 
+.menu-link .anticon{
+  display: flex;
+  justify-content: center;
+}
+
 
 @media (min-width: 768px){
   body{
@@ -21,6 +26,11 @@ body {
 
   
   .categories::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  .products::-webkit-scrollbar {
     display: none;
   }
 }

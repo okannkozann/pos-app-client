@@ -5,7 +5,7 @@ const Edit = ({
   isEditModalOpen,
   setIsEditModalOpen,
   categories,
-  setCatregories,
+  setCategories,
 }) => {
   const [editingRow, setEditingRow] = useState({});
 
@@ -17,7 +17,7 @@ const Edit = ({
         headers: { "Content-Type": "application/json; charset=utf-8" },
       });
       message.success("Kategori başarıyla güncellendi");
-      setCatregories(
+      setCategories(
         categories.map((item) => {
           if (item.id === editingRow.id) {
             return { ...item, title: values.title };
@@ -41,7 +41,7 @@ const Edit = ({
           headers: { "Content-Type": "application/json; charset=utf-8" },
         });
         message.success("Kategori başarıyla silindi");
-        setCatregories(categories.filter((item) => item._id !== id));
+        setCategories(categories.filter((item) => item._id !== id));
       } catch (error) {
         message.error("Birşeyler yanlış gitti...");
         console.log(error);
