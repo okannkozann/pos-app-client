@@ -1,4 +1,4 @@
-import { Button, Form, Input, Modal, message } from "antd";
+import { Button, Form, Input, message, Modal } from "antd";
 import React from "react";
 
 const Add = ({
@@ -11,12 +11,12 @@ const Add = ({
 
   const onFinish = (values) => {
     try {
-      fetch(" http://localhost:5000/api/categories/add-category", {
+      fetch(process.env.REACT_APP_SERVER_URL + "/api/categories/add-category", {
         method: "POST",
         body: JSON.stringify(values),
-        headers: { "Content-Type": "application/json; charset=utf-8" },
+        headers: { "Content-type": "application/json; charset=UTF-8" },
       });
-      message.success("Kategori başarıyla eklendi");
+      message.success("Kategori başarıyla eklendi.");
       form.resetFields();
       setCategories([
         ...categories,
@@ -24,8 +24,8 @@ const Add = ({
           _id: Math.random(),
           title: values.title,
         },
-      ]); //yeni eklenen kategori anında listeye eklensin diye
-      setIsAddModalOpen(false);
+      ]);
+      setIsAddModalOpen(false)
     } catch (error) {
       console.log(error);
     }
@@ -42,12 +42,7 @@ const Add = ({
         <Form.Item
           name="title"
           label="Kategori Ekle"
-          rules={[
-            {
-              required: true,
-              message: "Kategori Ekle alanı boş geçilemez!",
-            },
-          ]}
+          rules={[{ required: true, message: "Kategori Alanı Boş Geçilemez!" }]}
         >
           <Input />
         </Form.Item>
